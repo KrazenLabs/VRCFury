@@ -43,7 +43,7 @@ for (const dir of await fs.readdir('.')) {
 
     const outputFilename = `${name}-${version}.tgz`;
     const outputPath = `dist/${outputFilename}`;
-    const outputUrl = `https://github.com/VRCFury/VRCFury/releases/download/${encodeURIComponent(tagName)}/${encodeURIComponent(outputFilename)}`;
+    const outputUrl = `https://github.com/KrazenLabs/VRCFury/releases/download/${encodeURIComponent(tagName)}/${encodeURIComponent(outputFilename)}`;
     await createTar(dir, outputPath);
 
     if (!existing) {
@@ -68,7 +68,7 @@ for (const dir of await fs.readdir('.')) {
 
     const outputZipFilename = `${name}-${version}-vcc.zip`;
     const outputZipPath = `dist/${outputZipFilename}`;
-    const outputZipUrl = `https://github.com/VRCFury/VRCFury/releases/download/${encodeURIComponent(tagName)}/${encodeURIComponent(outputZipFilename)}`;
+    const outputZipUrl = `https://github.com/KrazenLabs/VRCFury/releases/download/${encodeURIComponent(tagName)}/${encodeURIComponent(outputZipFilename)}`;
     await createZip(dir, outputZipPath);
 
     if (name === 'com.vrcfury.vrcfury') {
@@ -86,7 +86,7 @@ for (const dir of await fs.readdir('.')) {
         existingVcc.versions[version] = vccPackage;
     }
 
-    await spawn('git', [ 'config', '--global', 'user.email', 'noreply@vrcfury.com' ], { stdio: "inherit" });
+    await spawn('git', [ 'config', '--global', 'user.email', 'noreply@krazenlabs.com' ], { stdio: "inherit" });
     await spawn('git', [ 'config', '--global', 'user.name', 'VRCFury Releases' ], { stdio: "inherit" });
     await spawn('git', [ 'commit', '-m', `${json.displayName} v${version}`, packageJsonPath ], { stdio: "inherit" });
     await spawn('git', [ 'tag', tagName ], { stdio: "inherit" });
